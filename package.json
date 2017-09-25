@@ -1,0 +1,25 @@
+{
+  "name": "titan-js",
+  "version": "1.0.0",
+  "keywords": [
+    "util",
+    "functional",
+    "server",
+    "client",
+    "browser"
+  ],
+  "author": "daajack",
+  "contributors": [],
+  "scripts": {
+    "start": "node main.js --inspect --debug-brk",
+    "browserify": "browserify browser.js -o ../lemon/protected/sylma/view/compiler/titan.js",
+    "uglify": "browserify browser.js -o | uglifyjs > ../lemon/protected/sylma/view/compiler/titan.min.js"
+  },
+  "dependencies": {
+    "browserify": "14.4.0",
+    "fs": "0.0.1-security",
+    "uglify-es": "3.1.1",
+    "uglifyjs": "2.4.11",
+    "xmldom": "0.1.27"
+  }
+}
