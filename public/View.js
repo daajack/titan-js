@@ -15,4 +15,9 @@ module.exports = class View
   {
     this.content += content;
   }
+  
+  render ()
+  {
+    return this.content;
+  }
 }

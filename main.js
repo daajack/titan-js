@@ -1,20 +1,28 @@
 'use strict';
 
+global.__base = __dirname + '/lib';
+
 (function() {
 
   let Compiler = require('./lib/compiler/Compiler.js');
-  let compiler = new Compiler();
-  
+  let Document = require('./lib/dom/Document.js');
   let fs = require('fs');
-  let DOMParser = require('xmldom').DOMParser;
 
-  fs.readFile('index.vml', 'utf8', function(err, data) {
+  let compiler = new Compiler();
 
-    var document = new DOMParser().parseFromString(data, 'text/xml');
-//    let data = '<html>hello world</html>';
+  fs.readFile('test/index.vml', 'utf8', function(err, datas)
+  {
+    let DOMParser = require('xmldom').DOMParser;
     
-  let result = compiler.prepare(document);
-  console.log(result);
+    let document = new Document(new DOMParser);
+    document.parse(datas);
+    
+    compiler.prepare(document, 0, (result) => {
+      result.map(w => {
+        console.log('[[' + w.name + ']]');
+        console.log(w.content);
+      });
+    });
   });
 })()
 
