@@ -5,16 +5,16 @@ global.__base = __dirname + '/lib';
 (function() {
 
   let App = require('./lib/App.js');
-  let titan = new App;
+  let titan = new App('test');
   
   let Compiler = require('./lib/compiler/Compiler.js');
   let Document = require('./lib/dom/Document.js');
   
   let fs = titan.fs;
 
-  let compiler = new Compiler();
-
-  fs.getFile('test/index.vml').open(function(datas)
+  let compiler = new Compiler(titan);
+  
+  fs.getFile('test/index.vml').read().then(function(datas)
   {
     let DOMParser = require('xmldom').DOMParser;
     
@@ -31,5 +31,5 @@ global.__base = __dirname + '/lib';
         console.log(w.content);
       });
     });
-  });
+  }).catch(e => { throw new Error('Promise error : ' + e) });
 })()

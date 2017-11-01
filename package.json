@@ -11,7 +11,7 @@
   "author": "daajack",
   "contributors": [],
   "scripts": {
-    "start": "node main.js --inspect --debug-brk",
+    "start": "node --trace-warnings --inspect --inspect-brk=9292 main.js",
     "browserify": "browserify browser.js -o ../lemon/protected/sylma/view/compiler/titan.js",
     "uglify": "browserify browser.js -o | uglifyjs > ../lemon/protected/sylma/view/compiler/titan.min.js"
   },
