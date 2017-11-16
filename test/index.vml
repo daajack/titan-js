@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tpl:view
+  xmlns:tpl="http://2017.sylma.org/view"
+  xmlns="http://2017.sylma.org/html"
+>
+  
+  <tpl:tree schema="test/schema.xql"/>
+  
+  <tpl:import>test/samples.tpl</tpl:import>
+
+  <tpl:template>
+    <ul>
+      <!--<tpl:call path="sub"/>-->
+      <tpl:apply select="*" mode="sample2"/>
+    </ul>
+  </tpl:template>
+  
+  <tpl:template match="*" mode="sample2">
+    <li>
+      <tpl:read select="name"/>
+    </li>
+  </tpl:template>
+</tpl:view>

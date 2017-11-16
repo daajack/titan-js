@@ -12,15 +12,21 @@
   "contributors": [],
   "scripts": {
     "start": "node --trace-warnings --inspect --inspect-brk=9292 main.js",
+    "test": "mocha -t 3000 || exit 0",
     "browserify": "browserify browser.js -o ../lemon/protected/sylma/view/compiler/titan.js",
     "uglify": "browserify browser.js -o | uglifyjs > ../lemon/protected/sylma/view/compiler/titan.min.js"
   },
   "dependencies": {
+    "mocha                     ||": "||",
     "browserify": "14.4.0",
     "fs": "0.0.1-security",
     "jshint": "2.9.5",
     "uglify-es": "3.1.1",
     "uglifyjs": "2.4.11",
     "xmldom": "0.1.27"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
   }
 }

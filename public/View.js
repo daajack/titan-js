@@ -1,8 +1,9 @@
 
 module.exports = class View
 {
-  constructor()
+  constructor(app)
   {
+    this.app = app;
     this.content = '';
   }
   
@@ -14,6 +15,11 @@ module.exports = class View
   add (content)
   {
     this.content += content;
+  }
+  
+  call (path)
+  {
+    return this.app.call(path);
   }
   
   render ()
